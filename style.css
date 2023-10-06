@@ -1,0 +1,26 @@
+:root {
+    --cell-size: 5rem;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+}
+
+.gameboard {
+    background-color: #FFCF96;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: grid;
+    grid-template: repeat(3, var(--cell-size)) / repeat(3, var(--cell-size));
+    justify-content: center;
+    gap: .5rem;
+    padding: .5rem;
+}
+
+.cell {
+    background-color: #F6FDC3;
+    border-radius: 20px;
+    height: var(--cell-size);
+    width: var(--cell-size);
+}
