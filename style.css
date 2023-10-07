@@ -2,14 +2,25 @@
     --cell-size: 5rem;
 }
 
-.display {
+div {
     display: flex;
     justify-content: center;
 }
 
+.display {
+    background-color: #F6FDC3;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    padding: 1rem
+}
+
 .gameboard {
     background-color: #FFCF96;
-    border: 1px solid black;
     border-radius: 20px;
     display: grid;
     grid-template: repeat(3, var(--cell-size)) / repeat(3, var(--cell-size));
@@ -23,4 +34,12 @@
     border-radius: 20px;
     height: var(--cell-size);
     width: var(--cell-size);
+}
+
+.restart {
+    background-color: #CDFAD5;
+    border-radius: 20px;
+    font-weight: bold;
+    width: fit-content;
+    padding: .5rem 1rem;
 }
