@@ -2,9 +2,16 @@
     --cell-size: 5rem;
 }
 
+.congrats {
+    color: #FF8080;
+    font-size: 5rem;
+}
+
 div {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 .display {
