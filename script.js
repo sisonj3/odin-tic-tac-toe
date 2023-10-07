@@ -16,6 +16,9 @@ const gameController = (() => {
     let gameOver = false;
     let turnsTaken = 0;
 
+    // Message display
+    const message = document.querySelector('.congrats');
+
     // Gameboard div
     const boardDiv = document.querySelector('.gameboard');
 
@@ -28,6 +31,7 @@ const gameController = (() => {
             if((boardArr[i][0].textContent == token && boardArr[i][1].textContent == token && boardArr[i][2].textContent == token) ||
             (boardArr[0][i].textContent == token && boardArr[1][i].textContent == token && boardArr[2][i].textContent == token)) {
                 gameOver = true;
+                message.textContent = 'Player ' + token + ' wins!';
                 return true;
             }
         }
@@ -37,10 +41,10 @@ const gameController = (() => {
             ((boardArr[0][0].textContent == token && boardArr[2][2].textContent == token) 
             || (boardArr[2][0].textContent == token && boardArr[0][2].textContent == token))){
                 gameOver = true;
+                message.textContent = 'Player ' + token + ' wins!';
                 return true;
         }
 
-        // No winner
         return false;
     }
 
@@ -56,7 +60,10 @@ const gameController = (() => {
                 playerOne.takeTurn(e);
 
                 // Check if won
-                console.log('One wins: ' + checkWinner(playerOne.token));
+                if(checkWinner(playerOne.token)){
+                    return;
+                }
+
             } else {
                 // Update number of turns taken
                 turnsTaken++;
@@ -64,18 +71,31 @@ const gameController = (() => {
                 playerTwo.takeTurn(e);
 
                 // Check if won
-                console.log('Two wins: ' + checkWinner(playerTwo.token));
+                if(checkWinner(playerTwo.token)){
+                    return;
+                }
             }
 
             // Game is a draw
             if(turnsTaken >= 9){
                 gameOver = true;
-                alert('Draw!');
+                message.textContent = 'Draw!';
             }
 
             isPlayerOneTurn = !isPlayerOneTurn;
         }
           
+    }
+
+    const restart = () => {
+        isPlayerOneTurn = true;
+        gameOver = false;
+        turnsTaken = 0;
+
+        message.textContent = '';
+
+        // Reset button text contents
+        boardArr.forEach(row => row.forEach(btn => btn.textContent = ''));
     }
 
     // Create gameboard
@@ -97,7 +117,9 @@ const gameController = (() => {
         }
     }
 
-    console.log(boardArr);
+    // Restart button
+    const restartBtn = document.querySelector('.restart');
+    restartBtn.addEventListener('click', restart);
 
 })();
 
