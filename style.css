@@ -38,6 +38,8 @@ div {
 
 .cell {
     background-color: #F6FDC3;
+    color: #FF8080;
+    font-size: 3rem;
     border-radius: 20px;
     height: var(--cell-size);
     width: var(--cell-size);
